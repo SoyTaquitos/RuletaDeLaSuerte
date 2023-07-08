@@ -17,7 +17,6 @@ namespace RuletaDeLaSuerte
         {
             InitializeComponent();
         }
-        Pregunta P;
         private string[] nombresMaterias = { "Matemáticas", "     Física", "Computación", "    Aleatoria" }; // Nombres de las materias en el orden de la ruleta
         private void DibujarRuleta()
         {
@@ -61,7 +60,6 @@ namespace RuletaDeLaSuerte
         private void Form1_Load(object sender, EventArgs e)
         {
             DibujarRuleta();
-            P = new Pregunta();
             //pictureBox1.Left = (this.ClientSize.Width - 800 - pictureBox1.Width) / 2;
             //pictureBox1.Top = (this.ClientSize.Height - pictureBox1.Height) / 2;
             //pictureBox2.Left = (this.ClientSize.Width - 50 - pictureBox2.Width) / 2;
