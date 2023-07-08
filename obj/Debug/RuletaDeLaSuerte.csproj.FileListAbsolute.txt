@@ -19,3 +19,9 @@ C:\Users\Usuario\Desktop\UAGRM TRABAJOS\PROGRAMACIÓN I\projects C#\Proyecto2023
 D:\Visual Studio 2015\PROYECTOS\RuletaDeLaSuerte\bin\Debug\RuletaDeLaSuerte.exe.config
 D:\Visual Studio 2015\PROYECTOS\RuletaDeLaSuerte\obj\Debug\RuletaDeLaSuerte.exe
 D:\Visual Studio 2015\PROYECTOS\RuletaDeLaSuerte\obj\Debug\RuletaDeLaSuerte.pdb
+D:\Visual Studio 2015\PROYECTOS\RuletaDeLaSuerte\bin\Debug\RuletaDeLaSuerte.exe
+D:\Visual Studio 2015\PROYECTOS\RuletaDeLaSuerte\bin\Debug\RuletaDeLaSuerte.pdb
+D:\Visual Studio 2015\PROYECTOS\RuletaDeLaSuerte\obj\Debug\RuletaDeLaSuerte.csprojResolveAssemblyReference.cache
+D:\Visual Studio 2015\PROYECTOS\RuletaDeLaSuerte\obj\Debug\RuletaDeLaSuerte.Form1.resources
+D:\Visual Studio 2015\PROYECTOS\RuletaDeLaSuerte\obj\Debug\RuletaDeLaSuerte.Properties.Resources.resources
+D:\Visual Studio 2015\PROYECTOS\RuletaDeLaSuerte\obj\Debug\RuletaDeLaSuerte.csproj.GenerateResource.Cache

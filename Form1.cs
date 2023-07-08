@@ -17,7 +17,7 @@ namespace RuletaDeLaSuerte
         {
             InitializeComponent();
         }
-
+        Pregunta P;
         private string[] nombresMaterias = { "Matemáticas", "     Física", "Computación", "    Aleatoria" }; // Nombres de las materias en el orden de la ruleta
         private void DibujarRuleta()
         {
@@ -61,12 +61,13 @@ namespace RuletaDeLaSuerte
         private void Form1_Load(object sender, EventArgs e)
         {
             DibujarRuleta();
+            P = new Pregunta();
             //pictureBox1.Left = (this.ClientSize.Width - 800 - pictureBox1.Width) / 2;
             //pictureBox1.Top = (this.ClientSize.Height - pictureBox1.Height) / 2;
             //pictureBox2.Left = (this.ClientSize.Width - 50 - pictureBox2.Width) / 2;
             //pictureBox2.Top = (this.ClientSize.Height - 900 - pictureBox2.Height) / 2;
             //button1.Left = (this.ClientSize.Width - 250 - button1.Width);
-            //button1.Top = (this.ClientSize.Height - 550 - button1.Height);
+            //button1.Top = (this.ClientSize.Height - 550 - button1.Height);         
         }
         private void pictureBox2_Click(object sender, EventArgs e)
         {
@@ -80,20 +81,22 @@ namespace RuletaDeLaSuerte
         private void button1_Click(object sender, EventArgs e)
         {
             // Establece el número de vueltas aleatoriamente (Vueltas completas)
-            NumeroDeVueltas = random.Next(3, 11) * 360;
-
+            NumeroDeVueltas = random.Next(4, 12) * 360;
 
             // Inicia la rotación de la ruleta
             timer1.Start();
-
-            
         }
+        // Calcula el índice de la casilla seleccionada
 
+        private int AnguloFinal;
+        private float currentRotationAngle = 0f; // Variable para rastrear el ángulo de rotación actual
         private void timer1_Tick(object sender, EventArgs e)
         {
             // Realiza una rotación en VelocidadEnLaQueDaVueltas
             pictureBox1.Image.RotateFlip(RotateFlipType.Rotate90FlipNone); //Gira 90 grados 
             pictureBox1.Invalidate(); // Vuelve a dibujar la ruleta
+                                      // Actualiza el ángulo de rotación actual
+            currentRotationAngle += 90f;
 
             // Actualiza el contador de rotación total.
             TotalDeRotaciones += VelocidadEnLaQueDaVueltas;
@@ -104,16 +107,56 @@ namespace RuletaDeLaSuerte
                 // Detiene la rotación de la ruleta
                 timer1.Stop();
 
+                float sectorAngle = 360f / nombresMaterias.Length;
+                int selectedMateriaIndex = (int)(currentRotationAngle / sectorAngle) % nombresMaterias.Length;
+
+                // Asegúrate de que el índice esté dentro del rango válido
+                if (selectedMateriaIndex < 0)
+                    selectedMateriaIndex += nombresMaterias.Length;
+
+                // Obtiene el nombre de la materia seleccionada
+                string selectedMateria = nombresMaterias[selectedMateriaIndex].Trim();
+
+                // Asigna el ángulo final
+                AnguloFinal = (int)currentRotationAngle;
+                if (AnguloFinal == 720 || AnguloFinal == 1800)
+                {
+                    MessageBox.Show("Usted recibira una pregunta de Matematicas");
+                    //Random random = new Random();
+                    //random.Next(1, 4);
+                }
+                if(AnguloFinal == 990 || AnguloFinal == 1350)
+                {
+                    MessageBox.Show("Usted recibira una pregunta de Física");
+                    //Random random = new Random();
+                    //random.Next(1, 4);
+                }
+                if(AnguloFinal == 540 || AnguloFinal == 1620)
+                {
+                    MessageBox.Show("Usted recibira una pregunta de Computación");
+                    //Random random = new Random();
+                    //random.Next(1, 4);
+                }
+                if (AnguloFinal == 810 || AnguloFinal == 1170 || AnguloFinal == 1530)
+                {
+                    MessageBox.Show("Usted recibira una pregunta aleatoria");
+                    //Random random = new Random();
+                    //random.Next(1, 4);
+                }
+                // Muestra la ventana emergente con el ángulo final
+                MessageBox.Show("La ruleta se detuvo en el ángulo: " + AnguloFinal + " grados");
+                // Reiniciar el ángulo de rotación actual
+                currentRotationAngle = 0f;
                 // Reinicia el contador de TotalDeRotaciones
                 TotalDeRotaciones = 0;
-
-
+                DibujarRuleta();
             }
         }
-
+        
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }
+               
     }
 }
