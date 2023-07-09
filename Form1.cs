@@ -122,24 +122,28 @@ namespace RuletaDeLaSuerte
                     MessageBox.Show("Usted recibira una pregunta de Matematicas");
                     //Random random = new Random();
                     //random.Next(1, 4);
+                    this.MostrarVentanaCentrada();
                 }
                 if(AnguloFinal == 990 || AnguloFinal == 1350)
                 {
                     MessageBox.Show("Usted recibira una pregunta de Física");
                     //Random random = new Random();
                     //random.Next(1, 4);
+                    this.MostrarVentanaCentrada();
                 }
                 if(AnguloFinal == 540 || AnguloFinal == 1620)
                 {
                     MessageBox.Show("Usted recibira una pregunta de Computación");
                     //Random random = new Random();
                     //random.Next(1, 4);
+                    this.MostrarVentanaCentrada();
                 }
                 if (AnguloFinal == 810 || AnguloFinal == 1170 || AnguloFinal == 1530)
                 {
                     MessageBox.Show("Usted recibira una pregunta aleatoria");
                     //Random random = new Random();
                     //random.Next(1, 4);
+                    this.MostrarVentanaCentrada();
                 }
                 // Muestra la ventana emergente con el ángulo final
                 MessageBox.Show("La ruleta se detuvo en el ángulo: " + AnguloFinal + " grados");
@@ -150,7 +154,75 @@ namespace RuletaDeLaSuerte
                 DibujarRuleta();
             }
         }
-        
+        //private void AgregarPestana() //Intento de que salte una pestaña al dejar de girar la ruleta
+        //{
+        //    // Crea un nuevo objeto de página (pestaña)
+        //    TabPage nuevaPestana = new TabPage("Nueva Pestaña");
+
+        //    // Agrega cualquier contenido adicional a la nueva pestaña
+        //    // Puedes agregar controles u otros elementos dentro de la pestaña según tus necesidades
+
+        //    // Agrega la nueva pestaña al TabControl
+        //    tabControl1.TabPages.Add(nuevaPestana);
+
+        //    // Establece la nueva pestaña como la pestaña activa
+        //    tabControl1.SelectedTab = nuevaPestana;
+        //}
+        private void MostrarVentanaCentrada() //Es un nuevo Formulario
+        {
+            // Crear una ventana en el formulario
+            Form ventana = new Form();
+
+            // Centramos la ventana
+            ventana.StartPosition = FormStartPosition.CenterScreen;
+            // Agregar un botón
+            Button boton = new Button();
+            boton.Text = "Aceptar";
+            boton.Location = new Point(50, 50); // Establece la posición del botón en la ventana
+            boton.Click += (sender, e) =>
+            {
+                // Manejar el evento de clic del botón
+                // Aquí puedes realizar acciones adicionales o cerrar la ventana, según tus necesidades
+                ventana.Close();
+            };
+            ventana.Controls.Add(boton);
+
+            // Agregamos el mensaje
+            Label mensaje = new Label();
+            mensaje.Text = "¡Acción completada!";
+            mensaje.Location = new Point(50, 100); // Establece la posición del mensaje en la ventana
+            ventana.Controls.Add(mensaje);
+            this.MostrarPregunta();
+            // Muestra la ventana
+            ventana.ShowDialog();
+        }
+        private void MostrarPregunta()
+        {
+            string pregunta = "¿Miranda e gei?";
+            string titulo = "Pregunta";
+            MessageBoxButtons botones = MessageBoxButtons.YesNoCancel;
+
+            DialogResult resultado = MessageBox.Show(pregunta, titulo, botones);
+
+            if (resultado == DialogResult.Yes)
+            {
+                // Opción "Sí" seleccionada
+                // Realiza las acciones correspondientes aquí
+                MessageBox.Show("Correcto mi lidel");
+            }
+            else if (resultado == DialogResult.No)
+            {
+                // Opción "No" seleccionada
+                // Realiza las acciones correspondientes aquí
+                MessageBox.Show("Pensala bien pa");
+            }
+            else if (resultado == DialogResult.Cancel)
+            {
+                // Opción "Cancelar" seleccionada
+                // Realiza las acciones correspondientes aquí
+                MessageBox.Show("Depende");
+            }
+        }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
