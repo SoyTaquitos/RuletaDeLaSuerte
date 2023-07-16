@@ -19,7 +19,7 @@ namespace RuletaDeLaSuerte
 
         private void VentanaPregunta_Load(object sender, EventArgs e)
         {
-
+            //Cambios para hacer las preguntas con los Radio Botones
         }
 
         private void button1_Click(object sender, EventArgs e)
