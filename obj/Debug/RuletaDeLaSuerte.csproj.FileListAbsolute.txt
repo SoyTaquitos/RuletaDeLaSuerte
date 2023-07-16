@@ -25,3 +25,4 @@ D:\Visual Studio 2015\PROYECTOS\RuletaDeLaSuerte\obj\Debug\RuletaDeLaSuerte.cspr
 D:\Visual Studio 2015\PROYECTOS\RuletaDeLaSuerte\obj\Debug\RuletaDeLaSuerte.Form1.resources
 D:\Visual Studio 2015\PROYECTOS\RuletaDeLaSuerte\obj\Debug\RuletaDeLaSuerte.Properties.Resources.resources
 D:\Visual Studio 2015\PROYECTOS\RuletaDeLaSuerte\obj\Debug\RuletaDeLaSuerte.csproj.GenerateResource.Cache
+D:\Visual Studio 2015\PROYECTOS\RuletaDeLaSuerte\obj\Debug\RuletaDeLaSuerte.VentanaPregunta.resources

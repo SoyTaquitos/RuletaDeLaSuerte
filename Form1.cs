@@ -12,10 +12,10 @@ namespace RuletaDeLaSuerte
 {
     public partial class Form1 : Form
     {
-
         public Form1()
-        {
+        {            
             InitializeComponent();
+          
         }
         private string[] nombresMaterias = { "Matemáticas", "     Física", "Computación", "    Aleatoria" }; // Nombres de las materias en el orden de la ruleta
         private void DibujarRuleta()
@@ -77,19 +77,44 @@ namespace RuletaDeLaSuerte
         private int VelocidadEnLaQueDaVueltas = 200; //De cuanto en cuanto aumenta para llegar "TotalDeRotaciones"
 
         private void button1_Click(object sender, EventArgs e)
-        {
+        {            
             // Establece el número de vueltas aleatoriamente (Vueltas completas)
             NumeroDeVueltas = random.Next(4, 12) * 360;
 
             // Inicia la rotación de la ruleta
             timer1.Start();
         }
-        // Calcula el índice de la casilla seleccionada
 
+        private string ObtenerPreguntaAleatoria(List<string> preguntas)
+        {
+            int indice = random.Next(preguntas.Count);
+            return preguntas[indice];
+        }
+
+        // Calcula el índice de la casilla seleccionada
         private int AnguloFinal;
         private float currentRotationAngle = 0f; // Variable para rastrear el ángulo de rotación actual
         private void timer1_Tick(object sender, EventArgs e)
         {
+            // Crea las listas de preguntas
+            List<Pregunta> preguntasMatematicas = new List<Pregunta>();
+            List<Pregunta> preguntasFisica = new List<Pregunta>();
+            List<Pregunta> preguntasComputacion = new List<Pregunta>();
+
+            // Agrega las preguntas a las listas correspondientes
+            preguntasMatematicas.Add(new Pregunta("Matemáticas", "¿Cuánto es 2 + 2?", new List<string> { "3", "4", "5", "6" }, "4"));
+            preguntasMatematicas.Add(new Pregunta("Matemáticas", "¿Cuánto es 1 + 1?", new List<string> { "3", "4", "5", "6" }, "4"));
+
+            preguntasFisica.Add(new Pregunta("fisica", "gravedad", new List<string> { "3", "4", "5", "6" }, "4"));
+            preguntasFisica.Add(new Pregunta("fisica", "¿newton", new List<string> { "3", "4", "5", "6" }, "4"));
+
+            preguntasComputacion.Add(new Pregunta("computación", "¿algoritmo?", new List<string> { "3", "4", "5", "6" }, "4"));
+            preguntasComputacion.Add(new Pregunta("computación", "ram", new List<string> { "3", "4", "5", "6" }, "4"));
+
+            // Agrega todas las preguntas necesarias a las listas correspondientes
+
+            Random random = new Random();
+            Pregunta preguntaAleatoria;
             // Realiza una rotación en VelocidadEnLaQueDaVueltas
             pictureBox1.Image.RotateFlip(RotateFlipType.Rotate90FlipNone); //Gira 90 grados 
             pictureBox1.Invalidate(); // Vuelve a dibujar la ruleta
@@ -120,109 +145,89 @@ namespace RuletaDeLaSuerte
                 if (AnguloFinal == 720 || AnguloFinal == 1800)
                 {
                     MessageBox.Show("Usted recibira una pregunta de Matematicas");
-                    //Random random = new Random();
-                    //random.Next(1, 4);
-                    this.MostrarVentanaCentrada();
+                    int indicePregunta = random.Next(preguntasMatematicas.Count);
+                    preguntaAleatoria = preguntasMatematicas[indicePregunta];
+                    VentanaPregunta ventanaPregunta = new VentanaPregunta();
+                    ventanaPregunta.ShowDialog();
+
                 }
-                if(AnguloFinal == 990 || AnguloFinal == 1350)
+
+                if (AnguloFinal == 990 || AnguloFinal == 1350)
                 {
                     MessageBox.Show("Usted recibira una pregunta de Física");
-                    //Random random = new Random();
-                    //random.Next(1, 4);
-                    this.MostrarVentanaCentrada();
+                    int indicePregunta = random.Next(preguntasFisica.Count);
+                    preguntaAleatoria = preguntasFisica[indicePregunta];
+                    VentanaPregunta ventanaPregunta = new VentanaPregunta();
+                    ventanaPregunta.ShowDialog();
                 }
-                if(AnguloFinal == 540 || AnguloFinal == 1620)
+
+                if (AnguloFinal == 540 || AnguloFinal == 1620)
                 {
                     MessageBox.Show("Usted recibira una pregunta de Computación");
-                    //Random random = new Random();
-                    //random.Next(1, 4);
-                    this.MostrarVentanaCentrada();
+                    int indicePregunta = random.Next(preguntasComputacion.Count);
+                    preguntaAleatoria = preguntasComputacion[indicePregunta];
+                    VentanaPregunta ventanaPregunta = new VentanaPregunta();
+                    ventanaPregunta.ShowDialog();
                 }
                 if (AnguloFinal == 810 || AnguloFinal == 1170 || AnguloFinal == 1530)
                 {
-                    MessageBox.Show("Usted recibira una pregunta aleatoria");
-                    //Random random = new Random();
-                    //random.Next(1, 4);
+                    MessageBox.Show("Usted recibira una pregunta Aleatoria");
                     this.MostrarVentanaCentrada();
                 }
-                // Muestra la ventana emergente con el ángulo final
-                MessageBox.Show("La ruleta se detuvo en el ángulo: " + AnguloFinal + " grados");
                 // Reiniciar el ángulo de rotación actual
                 currentRotationAngle = 0f;
                 // Reinicia el contador de TotalDeRotaciones
                 TotalDeRotaciones = 0;
                 DibujarRuleta();
             }
-        }
-        //private void AgregarPestana() //Intento de que salte una pestaña al dejar de girar la ruleta
-        //{
-        //    // Crea un nuevo objeto de página (pestaña)
-        //    TabPage nuevaPestana = new TabPage("Nueva Pestaña");
-
-        //    // Agrega cualquier contenido adicional a la nueva pestaña
-        //    // Puedes agregar controles u otros elementos dentro de la pestaña según tus necesidades
-
-        //    // Agrega la nueva pestaña al TabControl
-        //    tabControl1.TabPages.Add(nuevaPestana);
-
-        //    // Establece la nueva pestaña como la pestaña activa
-        //    tabControl1.SelectedTab = nuevaPestana;
-        //}
+        }      
         private void MostrarVentanaCentrada() //Es un nuevo Formulario
         {
             // Crear una ventana en el formulario
             Form ventana = new Form();
 
             // Centramos la ventana
-            ventana.StartPosition = FormStartPosition.CenterScreen;
-            // Agregar un botón
-            Button boton = new Button();
-            boton.Text = "Aceptar";
-            boton.Location = new Point(50, 50); // Establece la posición del botón en la ventana
-            boton.Click += (sender, e) =>
+            ventana.StartPosition = FormStartPosition.CenterScreen;           
             {
                 // Manejar el evento de clic del botón
                 // Aquí puedes realizar acciones adicionales o cerrar la ventana, según tus necesidades
                 ventana.Close();
             };
-            ventana.Controls.Add(boton);
 
             // Agregamos el mensaje
             Label mensaje = new Label();
             mensaje.Text = "¡Acción completada!";
             mensaje.Location = new Point(50, 100); // Establece la posición del mensaje en la ventana
             ventana.Controls.Add(mensaje);
-            this.MostrarPregunta();
-            // Muestra la ventana
-            ventana.ShowDialog();
+            //this.MostrarPregunta();
         }
-        private void MostrarPregunta()
-        {
-            string pregunta = "¿Miranda e gei?";
-            string titulo = "Pregunta";
-            MessageBoxButtons botones = MessageBoxButtons.YesNoCancel;
+        //private void MostrarPregunta()
+        //{
+        //    string pregunta = "¿Miranda e gei?";
+        //    string titulo = "Pregunta";
+        //    MessageBoxButtons botones = MessageBoxButtons.YesNoCancel;
 
-            DialogResult resultado = MessageBox.Show(pregunta, titulo, botones);
+        //    DialogResult resultado = MessageBox.Show(pregunta, titulo, botones);
 
-            if (resultado == DialogResult.Yes)
-            {
-                // Opción "Sí" seleccionada
-                // Realiza las acciones correspondientes aquí
-                MessageBox.Show("Correcto mi lidel");
-            }
-            else if (resultado == DialogResult.No)
-            {
-                // Opción "No" seleccionada
-                // Realiza las acciones correspondientes aquí
-                MessageBox.Show("Pensala bien pa");
-            }
-            else if (resultado == DialogResult.Cancel)
-            {
-                // Opción "Cancelar" seleccionada
-                // Realiza las acciones correspondientes aquí
-                MessageBox.Show("Depende");
-            }
-        }
+        //    if (resultado == DialogResult.Yes)
+        //    {
+        //        // Opción "Sí" seleccionada
+        //        // Realiza las acciones correspondientes aquí
+        //        MessageBox.Show("Correcto mi lidel");
+        //    }
+        //    else if (resultado == DialogResult.No)
+        //    {
+        //        // Opción "No" seleccionada
+        //        // Realiza las acciones correspondientes aquí
+        //        MessageBox.Show("Pensala bien pa");
+        //    }
+        //    else if (resultado == DialogResult.Cancel)
+        //    {
+        //        // Opción "Cancelar" seleccionada
+        //        // Realiza las acciones correspondientes aquí
+        //        MessageBox.Show("Depende");
+        //    }
+        //}
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
