@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace RuletaDeLaSuerte
 {
-    public partial class Form1 : Form
+    public partial class Ruleta : Form
     {
-        public Form1()
+        public Ruleta()
         {            
             InitializeComponent();
           
@@ -59,13 +59,7 @@ namespace RuletaDeLaSuerte
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            DibujarRuleta();
-            //pictureBox1.Left = (this.ClientSize.Width - 800 - pictureBox1.Width) / 2;
-            //pictureBox1.Top = (this.ClientSize.Height - pictureBox1.Height) / 2;
-            //pictureBox2.Left = (this.ClientSize.Width - 50 - pictureBox2.Width) / 2;
-            //pictureBox2.Top = (this.ClientSize.Height - 900 - pictureBox2.Height) / 2;
-            //button1.Left = (this.ClientSize.Width - 250 - button1.Width);
-            //button1.Top = (this.ClientSize.Height - 550 - button1.Height);         
+            DibujarRuleta();                   
         }
         private void pictureBox2_Click(object sender, EventArgs e)
         {
@@ -75,7 +69,6 @@ namespace RuletaDeLaSuerte
         private int TotalDeRotaciones = 0;
         private int NumeroDeVueltas;
         private int VelocidadEnLaQueDaVueltas = 200; //De cuanto en cuanto aumenta para llegar "TotalDeRotaciones"
-
         private void button1_Click(object sender, EventArgs e)
         {            
             // Establece el número de vueltas aleatoriamente (Vueltas completas)
@@ -92,7 +85,7 @@ namespace RuletaDeLaSuerte
         }
 
         // Calcula el índice de la casilla seleccionada
-        private int AnguloFinal;
+        public int AnguloFinal;
         private float currentRotationAngle = 0f; // Variable para rastrear el ángulo de rotación actual
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -145,11 +138,11 @@ namespace RuletaDeLaSuerte
                 if (AnguloFinal == 720 || AnguloFinal == 1800)
                 {
                     MessageBox.Show("Usted recibira una pregunta de Matematicas");
-                    int indicePregunta = random.Next(preguntasMatematicas.Count);
-                    preguntaAleatoria = preguntasMatematicas[indicePregunta];
-                    VentanaPregunta ventanaPregunta = new VentanaPregunta();
+                    int indicePregunta = random.Next(preguntasMatematicas.Count); // No sirve aquí
+                    preguntaAleatoria = preguntasMatematicas[indicePregunta];                  
+                    Ruleta ruleta = new Ruleta();
+                    VentanaPregunta ventanaPregunta = new VentanaPregunta(ruleta);
                     ventanaPregunta.ShowDialog();
-
                 }
 
                 if (AnguloFinal == 990 || AnguloFinal == 1350)
@@ -157,7 +150,8 @@ namespace RuletaDeLaSuerte
                     MessageBox.Show("Usted recibira una pregunta de Física");
                     int indicePregunta = random.Next(preguntasFisica.Count);
                     preguntaAleatoria = preguntasFisica[indicePregunta];
-                    VentanaPregunta ventanaPregunta = new VentanaPregunta();
+                    Ruleta ruleta = new Ruleta();
+                    VentanaPregunta ventanaPregunta = new VentanaPregunta(ruleta);
                     ventanaPregunta.ShowDialog();
                 }
 
@@ -166,13 +160,16 @@ namespace RuletaDeLaSuerte
                     MessageBox.Show("Usted recibira una pregunta de Computación");
                     int indicePregunta = random.Next(preguntasComputacion.Count);
                     preguntaAleatoria = preguntasComputacion[indicePregunta];
-                    VentanaPregunta ventanaPregunta = new VentanaPregunta();
-                    ventanaPregunta.ShowDialog();
+                    Ruleta ruleta = new Ruleta();
+                    VentanaPregunta ventanaPregunta = new VentanaPregunta(ruleta);
+                    ventanaPregunta.ShowDialog();                                    
                 }
                 if (AnguloFinal == 810 || AnguloFinal == 1170 || AnguloFinal == 1530)
                 {
                     MessageBox.Show("Usted recibira una pregunta Aleatoria");
-                    this.MostrarVentanaCentrada();
+                    Ruleta ruleta = new Ruleta();
+                    VentanaPregunta ventanaPregunta = new VentanaPregunta(ruleta);
+                    ventanaPregunta.ShowDialog();
                 }
                 // Reiniciar el ángulo de rotación actual
                 currentRotationAngle = 0f;
@@ -180,54 +177,8 @@ namespace RuletaDeLaSuerte
                 TotalDeRotaciones = 0;
                 DibujarRuleta();
             }
-        }      
-        private void MostrarVentanaCentrada() //Es un nuevo Formulario
-        {
-            // Crear una ventana en el formulario
-            Form ventana = new Form();
-
-            // Centramos la ventana
-            ventana.StartPosition = FormStartPosition.CenterScreen;           
-            {
-                // Manejar el evento de clic del botón
-                // Aquí puedes realizar acciones adicionales o cerrar la ventana, según tus necesidades
-                ventana.Close();
-            };
-
-            // Agregamos el mensaje
-            Label mensaje = new Label();
-            mensaje.Text = "¡Acción completada!";
-            mensaje.Location = new Point(50, 100); // Establece la posición del mensaje en la ventana
-            ventana.Controls.Add(mensaje);
-            //this.MostrarPregunta();
         }
-        //private void MostrarPregunta()
-        //{
-        //    string pregunta = "¿Miranda e gei?";
-        //    string titulo = "Pregunta";
-        //    MessageBoxButtons botones = MessageBoxButtons.YesNoCancel;
-
-        //    DialogResult resultado = MessageBox.Show(pregunta, titulo, botones);
-
-        //    if (resultado == DialogResult.Yes)
-        //    {
-        //        // Opción "Sí" seleccionada
-        //        // Realiza las acciones correspondientes aquí
-        //        MessageBox.Show("Correcto mi lidel");
-        //    }
-        //    else if (resultado == DialogResult.No)
-        //    {
-        //        // Opción "No" seleccionada
-        //        // Realiza las acciones correspondientes aquí
-        //        MessageBox.Show("Pensala bien pa");
-        //    }
-        //    else if (resultado == DialogResult.Cancel)
-        //    {
-        //        // Opción "Cancelar" seleccionada
-        //        // Realiza las acciones correspondientes aquí
-        //        MessageBox.Show("Depende");
-        //    }
-        //}
+        
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
