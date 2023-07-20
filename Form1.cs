@@ -89,21 +89,6 @@ namespace RuletaDeLaSuerte
         private float currentRotationAngle = 0f; // Variable para rastrear el ángulo de rotación actual
         private void timer1_Tick(object sender, EventArgs e)
         {
-            // Crea las listas de preguntas
-            List<Pregunta> preguntasMatematicas = new List<Pregunta>();
-            List<Pregunta> preguntasFisica = new List<Pregunta>();
-            List<Pregunta> preguntasComputacion = new List<Pregunta>();
-
-            // Agrega las preguntas a las listas correspondientes
-            preguntasMatematicas.Add(new Pregunta("Matemáticas", "¿Cuánto es 2 + 2?", new List<string> { "3", "4", "5", "6" }, "4"));
-            preguntasMatematicas.Add(new Pregunta("Matemáticas", "¿Cuánto es 1 + 1?", new List<string> { "3", "4", "5", "6" }, "4"));
-
-            preguntasFisica.Add(new Pregunta("fisica", "gravedad", new List<string> { "3", "4", "5", "6" }, "4"));
-            preguntasFisica.Add(new Pregunta("fisica", "¿newton", new List<string> { "3", "4", "5", "6" }, "4"));
-
-            preguntasComputacion.Add(new Pregunta("computación", "¿algoritmo?", new List<string> { "3", "4", "5", "6" }, "4"));
-            preguntasComputacion.Add(new Pregunta("computación", "ram", new List<string> { "3", "4", "5", "6" }, "4"));
-
             // Agrega todas las preguntas necesarias a las listas correspondientes
 
             Random random = new Random();
@@ -133,43 +118,33 @@ namespace RuletaDeLaSuerte
                 // Obtiene el nombre de la materia seleccionada
                 string selectedMateria = nombresMaterias[selectedMateriaIndex].Trim();
 
+                
+
                 // Asigna el ángulo final
                 AnguloFinal = (int)currentRotationAngle;
                 if (AnguloFinal == 720 || AnguloFinal == 1800)
-                {
-                    MessageBox.Show("Usted recibira una pregunta de Matematicas");
-                    int indicePregunta = random.Next(preguntasMatematicas.Count); // No sirve aquí
-                    preguntaAleatoria = preguntasMatematicas[indicePregunta];                  
-                    Ruleta ruleta = new Ruleta();
-                    VentanaPregunta ventanaPregunta = new VentanaPregunta(ruleta);
+                {                  
+                    MessageBox.Show("Usted recibira una pregunta de Matematicas");                                                     
+                    VentanaPregunta ventanaPregunta = new VentanaPregunta("matematicas");
                     ventanaPregunta.ShowDialog();
                 }
 
                 if (AnguloFinal == 990 || AnguloFinal == 1350)
                 {
-                    MessageBox.Show("Usted recibira una pregunta de Física");
-                    int indicePregunta = random.Next(preguntasFisica.Count);
-                    preguntaAleatoria = preguntasFisica[indicePregunta];
-                    Ruleta ruleta = new Ruleta();
-                    VentanaPregunta ventanaPregunta = new VentanaPregunta(ruleta);
+                    MessageBox.Show("Usted recibira una pregunta de Física");                   
+                    VentanaPregunta ventanaPregunta = new VentanaPregunta("fisica");
                     ventanaPregunta.ShowDialog();
                 }
 
                 if (AnguloFinal == 540 || AnguloFinal == 1620)
                 {
                     MessageBox.Show("Usted recibira una pregunta de Computación");
-                    int indicePregunta = random.Next(preguntasComputacion.Count);
-                    preguntaAleatoria = preguntasComputacion[indicePregunta];
-                    Ruleta ruleta = new Ruleta();
-                    VentanaPregunta ventanaPregunta = new VentanaPregunta(ruleta);
+                    VentanaPregunta ventanaPregunta = new VentanaPregunta("computación");
                     ventanaPregunta.ShowDialog();                                    
                 }
                 if (AnguloFinal == 810 || AnguloFinal == 1170 || AnguloFinal == 1530)
                 {
-                    MessageBox.Show("Usted recibira una pregunta Aleatoria");
-                    Ruleta ruleta = new Ruleta();
-                    VentanaPregunta ventanaPregunta = new VentanaPregunta(ruleta);
-                    ventanaPregunta.ShowDialog();
+                    MessageBox.Show("Usted recibira una pregunta Aleatoria");                                     
                 }
                 // Reiniciar el ángulo de rotación actual
                 currentRotationAngle = 0f;

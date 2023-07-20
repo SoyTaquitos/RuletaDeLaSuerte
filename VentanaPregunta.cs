@@ -12,28 +12,73 @@ namespace RuletaDeLaSuerte
 {
     public partial class VentanaPregunta : Form
     {
-        private Ruleta ruleta;       
-        public VentanaPregunta(Ruleta ruleta)
+        private List<Pregunta> preguntas;
+        private int indicePregunta;
+        Vector v;
+        public VentanaPregunta(string materia)
         {
+            v = new Vector();
             InitializeComponent();
-            this.ruleta = ruleta;
+            if (materia == "matematicas")
+            {
+                // Obtener una pregunta aleatoria de matemáticas desde CVector
+                Pregunta preguntaMatematicasAleatoria = v.ObtenerPreguntaMatematicas();
+
+                // Mostrar la pregunta y opciones en los controles
+                MostrarPreguntaEnControles(preguntaMatematicasAleatoria);
+            }
         }
+        private void MostrarPreguntaEnControles(Pregunta pregunta)
+        {
+            // Asignar el enunciado de la pregunta al Label
+            label1.Text = pregunta.Enunciado;
+
+            // Asignar las opciones de respuesta a los RadioButtons
+            radioButton1.Text = pregunta.Opciones[1];
+            radioButton2.Text = pregunta.Opciones[2];
+            radioButton3.Text = pregunta.Opciones[3];
+        }
+
         private void VentanaPregunta_Load(object sender, EventArgs e)
         {
-            //Cambios para hacer las preguntas con los Radio Botones 
-            if (ruleta.AnguloFinal == 720 | ruleta.AnguloFinal == 1800)
-            {
-                label1.Text = "hola";
-            }     
-                  
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Respuesta correcta");
-            Close();
-        }
+            if (indicePregunta >= 0 && indicePregunta < preguntas.Count)
+            {
+                Pregunta preguntaActual = preguntas[indicePregunta];
+                string respuestaSeleccionada = ObtenerRespuestaSeleccionada();
 
+                // Verificar si la respuesta seleccionada es correcta
+                if (respuestaSeleccionada == preguntaActual.RespuestaCorrecta)
+                {
+                    // Mostrar ventana emergente con respuesta correcta
+                    MessageBox.Show("¡Respuesta correcta!", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    // Mostrar ventana emergente con respuesta incorrecta
+                    MessageBox.Show("Respuesta incorrecta.", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+                // Cerrar la ventana de preguntas
+                this.Close();
+            }
+        }
+        private string ObtenerRespuestaSeleccionada()
+        {
+            if (radioButton1.Checked)
+                return radioButton1.Text;
+            if (radioButton2.Checked)
+                return radioButton2.Text;
+            if (radioButton3.Checked)
+                return radioButton3.Text;
+
+            // Si no se ha seleccionado ninguna respuesta, devolver cadena vacía
+            return "";
+        }
         public void label1_Click(object sender, EventArgs e)
         {
 
