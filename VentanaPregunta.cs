@@ -21,12 +21,29 @@ namespace RuletaDeLaSuerte
             InitializeComponent();
             if (materia == "matematicas")
             {
-                // Obtener una pregunta aleatoria de matemáticas desde CVector
+                // Obtener una pregunta aleatoria de matemáticas desde Vector
                 Pregunta preguntaMatematicasAleatoria = v.ObtenerPreguntaMatematicas();
 
                 // Mostrar la pregunta y opciones en los controles
                 MostrarPreguntaEnControles(preguntaMatematicasAleatoria);
             }
+            if (materia == "física")
+            {
+                // Obtener una pregunta aleatoria de fisica desde Vector
+                Pregunta preguntaFisicaAleatoria = v.ObtenerPreguntaFisica();
+
+                // Mostrar la pregunta y opciones en los controles
+                MostrarPreguntaEnControles(preguntaFisicaAleatoria);
+            }
+            if (materia == "computación")
+            {
+                // Obtener una pregunta aleatoria de computacion desde Vector
+                Pregunta preguntaComputacionAleatoria = v.ObtenerPreguntaComputacion();
+
+                // Mostrar la pregunta y opciones en los controles
+                MostrarPreguntaEnControles(preguntaComputacionAleatoria);
+            }
+
         }
         private void MostrarPreguntaEnControles(Pregunta pregunta)
         {
