@@ -29,3 +29,13 @@ D:\Visual Studio 2015\PROYECTOS\Ruleta De La Suerte\bin\Debug\RuletaDeLaSuerte.e
 D:\Visual Studio 2015\PROYECTOS\Ruleta De La Suerte\obj\Debug\RuletaDeLaSuerte.exe
 D:\Visual Studio 2015\PROYECTOS\Ruleta De La Suerte\obj\Debug\RuletaDeLaSuerte.pdb
 D:\Visual Studio 2015\PROYECTOS\RuletaDeLaSuerte\obj\Debug\RuletaDeLaSuerte.Ruleta.resources
+C:\Visual Studio 2015\PROYECTOS\RuletaDeLaSuerte\bin\Debug\RuletaDeLaSuerte.exe.config
+C:\Visual Studio 2015\PROYECTOS\RuletaDeLaSuerte\obj\Debug\RuletaDeLaSuerte.exe
+C:\Visual Studio 2015\PROYECTOS\RuletaDeLaSuerte\obj\Debug\RuletaDeLaSuerte.pdb
+C:\Visual Studio 2015\PROYECTOS\RuletaDeLaSuerte\bin\Debug\RuletaDeLaSuerte.exe
+C:\Visual Studio 2015\PROYECTOS\RuletaDeLaSuerte\bin\Debug\RuletaDeLaSuerte.pdb
+C:\Visual Studio 2015\PROYECTOS\RuletaDeLaSuerte\obj\Debug\RuletaDeLaSuerte.csprojResolveAssemblyReference.cache
+C:\Visual Studio 2015\PROYECTOS\RuletaDeLaSuerte\obj\Debug\RuletaDeLaSuerte.Ruleta.resources
+C:\Visual Studio 2015\PROYECTOS\RuletaDeLaSuerte\obj\Debug\RuletaDeLaSuerte.Properties.Resources.resources
+C:\Visual Studio 2015\PROYECTOS\RuletaDeLaSuerte\obj\Debug\RuletaDeLaSuerte.VentanaPregunta.resources
+C:\Visual Studio 2015\PROYECTOS\RuletaDeLaSuerte\obj\Debug\RuletaDeLaSuerte.csproj.GenerateResource.Cache

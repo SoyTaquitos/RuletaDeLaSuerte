@@ -13,9 +13,9 @@ namespace RuletaDeLaSuerte
     public partial class Ruleta : Form
     {
         public Ruleta()
-        {            
+        {
             InitializeComponent();
-          
+
         }
         private string[] nombresMaterias = { "Matemáticas", "     Física", "Computación", "    Aleatoria" }; // Nombres de las materias en el orden de la ruleta
         private void DibujarRuleta()
@@ -59,7 +59,7 @@ namespace RuletaDeLaSuerte
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            DibujarRuleta();                   
+            DibujarRuleta();
         }
         private void pictureBox2_Click(object sender, EventArgs e)
         {
@@ -70,7 +70,7 @@ namespace RuletaDeLaSuerte
         private int NumeroDeVueltas;
         private int VelocidadEnLaQueDaVueltas = 200; //De cuanto en cuanto aumenta para llegar "TotalDeRotaciones"
         private void button1_Click(object sender, EventArgs e)
-        {            
+        {
             // Establece el número de vueltas aleatoriamente (Vueltas completas)
             NumeroDeVueltas = random.Next(4, 12) * 360;
 
@@ -92,7 +92,7 @@ namespace RuletaDeLaSuerte
             // Agrega todas las preguntas necesarias a las listas correspondientes
 
             Random random = new Random();
-            Pregunta preguntaAleatoria;
+            EstablecerPregunta preguntaAleatoria;
             // Realiza una rotación en VelocidadEnLaQueDaVueltas
             pictureBox1.Image.RotateFlip(RotateFlipType.Rotate90FlipNone); //Gira 90 grados 
             pictureBox1.Invalidate(); // Vuelve a dibujar la ruleta
@@ -118,21 +118,20 @@ namespace RuletaDeLaSuerte
                 // Obtiene el nombre de la materia seleccionada
                 string selectedMateria = nombresMaterias[selectedMateriaIndex].Trim();
 
-                
 
                 // Asigna el ángulo final
                 AnguloFinal = (int)currentRotationAngle;
                 if (AnguloFinal == 720 || AnguloFinal == 1800)
-                {                  
-                    MessageBox.Show("Usted recibira una pregunta de Matematicas");                                                     
+                {
+                    MessageBox.Show("Usted recibira una pregunta de Matematicas");
                     VentanaPregunta ventanaPregunta = new VentanaPregunta("matematicas");
                     ventanaPregunta.ShowDialog();
                 }
 
                 if (AnguloFinal == 990 || AnguloFinal == 1350)
                 {
-                    MessageBox.Show("Usted recibira una pregunta de Física");                   
-                    VentanaPregunta ventanaPregunta = new VentanaPregunta("fisica");
+                    MessageBox.Show("Usted recibira una pregunta de Física");
+                    VentanaPregunta ventanaPregunta = new VentanaPregunta("física");
                     ventanaPregunta.ShowDialog();
                 }
 
@@ -140,11 +139,13 @@ namespace RuletaDeLaSuerte
                 {
                     MessageBox.Show("Usted recibira una pregunta de Computación");
                     VentanaPregunta ventanaPregunta = new VentanaPregunta("computación");
-                    ventanaPregunta.ShowDialog();                                    
+                    ventanaPregunta.ShowDialog();
                 }
                 if (AnguloFinal == 810 || AnguloFinal == 1170 || AnguloFinal == 1530)
                 {
-                    MessageBox.Show("Usted recibira una pregunta Aleatoria");                                     
+                    MessageBox.Show("Usted recibira una pregunta Aleatoria");
+                    VentanaPregunta ventanaPregunta = new VentanaPregunta("aleatoria");
+                    ventanaPregunta.ShowDialog();
                 }
                 // Reiniciar el ángulo de rotación actual
                 currentRotationAngle = 0f;
@@ -153,11 +154,11 @@ namespace RuletaDeLaSuerte
                 DibujarRuleta();
             }
         }
-        
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }
-               
+
     }
 }
