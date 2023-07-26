@@ -14,7 +14,6 @@ namespace RuletaDeLaSuerte
     {
         private EstablecerPregunta preguntaActual;
         Vector v;
-
         public VentanaPregunta(string materia)
         {
             v = new Vector();
@@ -44,7 +43,6 @@ namespace RuletaDeLaSuerte
             // Mostrar la pregunta y opciones en los controles
             MostrarPreguntaEnControles(preguntaActual);
         }
-
         private void MostrarPreguntaEnControles(EstablecerPregunta pregunta)
         {
             // Asignar el enunciado de la pregunta al Label
@@ -54,13 +52,7 @@ namespace RuletaDeLaSuerte
             radioButton1.Text = pregunta.Opciones[0];
             radioButton2.Text = pregunta.Opciones[1];
             radioButton3.Text = pregunta.Opciones[2];
-        }
-
-        private void VentanaPregunta_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        }      
         private void button1_Click(object sender, EventArgs e)
         {
             string respuestaSeleccionada = ObtenerRespuestaSeleccionada();
@@ -80,7 +72,6 @@ namespace RuletaDeLaSuerte
             // Cerrar la ventana de preguntas
             this.Close();
         }
-
         private string ObtenerRespuestaSeleccionada()
         {
             if (radioButton1.Checked)
@@ -97,10 +88,14 @@ namespace RuletaDeLaSuerte
         {
 
         }
-
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
 
         }
+        private void VentanaPregunta_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

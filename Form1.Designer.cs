@@ -41,7 +41,7 @@
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(915, 311);
+            this.button1.Location = new System.Drawing.Point(752, 323);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(206, 69);
             this.button1.TabIndex = 2;
